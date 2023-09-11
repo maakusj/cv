@@ -1,0 +1,74 @@
+body {
+  margin: 0px;
+}
+
+.container {
+  flex: 1;
+  display: flex; /* Behaves like a block */
+  flex-direction: column; /* stacked on top of each other */
+  gap: 1rem; /* gaps between every div/item */
+}
+
+nav {
+  /* separated this from nav ul in case I add something in the ul "logo" or something */
+  background-color: #0000008a;
+  border-image: linear-gradient(#0000008a, white) 15; /*wanted a little smoother transition between the nav and header */
+  border-width: 0px 0px 4px 0px;
+  border-style: solid;
+  height: 80px;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.desktop-nav {
+  display: flex; /* ?makes it behave like a "block, full width", and Overrides the flex-direction column to row again */
+  gap: 1.5rem; /* spacing between the items on the sides */
+  align-items: center; /* center the li in x-axis */
+  justify-content: center; /*center the ul in z-axis*/
+  list-style-type: none; /* no bullet points */
+  margin: 0px;
+  padding: 0px;
+  height: 80px; /* height of ul (the grey area) */
+}
+
+nav a {
+  color: white;
+  text-decoration: none; /* no unerline */
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: 0.15s ease; /*ease in the transition*/
+}
+
+nav a:hover {
+  color: #ffffff80;
+}
+
+.active {
+  color: #ffffff80;
+}
+
+@media (max-width: 680px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .logo img {
+    height: 60px;
+  }
+}
+
+@media (min-width: 681px) {
+  .mobile-nav {
+    display: none;
+  }
+}
