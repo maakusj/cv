@@ -4,6 +4,7 @@ body {
   margin: 0px;
   background-color: #f5f5f5;
   min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
@@ -49,24 +50,53 @@ nav a:hover {
 /*header*/
 header {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .main-header {
-  margin-left: auto; /*center the block*/
-  margin-right: auto;
   padding-top: 120px;
 }
 
-h1 {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .namnloggaren {
-  height: 200px;
+  height: 250px;
 }
 
 .webdevelopment {
   color: #97bda2;
+}
+
+.card {
+  width: 45%;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.title-image {
+  width: 100%;
+  float: right;
+  margin-top: 21.44px;
+  border-radius: 3px;
+}
+
+section {
+  width: 93.3%;
+}
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.cardp {
+  width: 33%;
 }
 
 footer a {
@@ -118,9 +148,17 @@ footer a {
   }
 
   #nav-button:checked ~ ul {
-    height: calc(
+    height: 100vh; /*calc(
       100vh - 80px
-    ); /*when clicked on the "hamb" nav button it's going to take upp the whole viewport height - the 80px the nav bar has so it doesn't extend to far*/
+    ); */ /*when clicked on the "hamb" nav button it's going to take upp the whole viewport height - the 80px the nav bar has so it doesn't extend to far*/
     transition: height 0.15s; /* time for transition to full height */
+  }
+
+  section {
+    width: 93.3%; /*aligned to the .card, space evenly above*/
+  }
+
+  .cardp {
+    width: 100%;
   }
 }
