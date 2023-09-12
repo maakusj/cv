@@ -1,24 +1,26 @@
 body {
+  display: flex;
+  flex-direction: column; /* stacked on top of each other */
   margin: 0px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
 }
 
 .container {
-  display: flex; /* Behaves like a block */
-  flex-direction: column; /* stacked on top of each other */
-  gap: 1rem; /* gaps between every div/item */
+  flex: 1;
 }
 
 nav {
   /* separated this from "top-nav"" in case I add something in it like "logo" or something */
   background-color: #0000008a;
-  border-image: linear-gradient(#0000008a, white) 15; /*wanted a little smoother transition between the nav and header */
+  border-image: linear-gradient(#0000008a, #f5f5f5) 15; /*wanted a little smoother transition between the nav and header */
   border-width: 0px 0px 4px 0px;
   border-style: solid;
   height: 80px;
 }
 
 .top-nav {
-  display: flex; /* ?makes it behave like a "block, full width", and Overrides the flex-direction column to row again */
+  display: flex; /* ?makes it behave like a "block, full width", and Overrides the flex-direction column (from .container) to row again */
   gap: 1.5rem; /* spacing between the items on the sides */
   align-items: center; /* center the li in x-axis */
   justify-content: center; /*center the ul in z-axis*/
@@ -44,6 +46,38 @@ nav a:hover {
   color: #ffffff80;
 }
 
+/*header*/
+header {
+  display: flex;
+}
+
+.main-header {
+  margin-left: auto; /*center the block*/
+  margin-right: auto;
+  padding-top: 120px;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.namnloggaren {
+  height: 200px;
+}
+
+.webdevelopment {
+  color: #97bda2;
+}
+
+footer a {
+  /*GitHublogo padded/aligned with "hamb" nav bar*/
+  float: right;
+  margin: 15px;
+  padding: 10px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
 /*hide the nav&label buttons here when "full size width"*/
 #nav-button {
   display: none; /*hides the input checkbox when  "full width size" nav is used */
@@ -57,15 +91,24 @@ nav a:hover {
 /*when screen width is less than 680 pixel go to "mobile version with "hamb bar" and dropdown menu instead */
 @media (max-width: 680px) {
   .top-nav {
+    position: absolute; /*not sure why I had to set it to absolute, think it has to be to set if I want out of the flexbox flow */
+    margin-top: 80px; /*where the dropdown menu should start*/
     height: 0px; /* set to 0 because i don't want anything to stand out of the main nav when "mobile" "hamb" bar isn't activated  */
-    overflow: hidden; /* so it doesn't "shine" through */
+    overflow: hidden; /* (maybe remove this) so it doesn't "shine" through */
     flex-direction: column; /* makes the nav ul (li) gets stacked on top of each other instead */
     width: 100%; /* the dropdown should take the whole screen width */
-    background-color: #0000008a; /*same color as the nav bar*/
+    background-color: #bdaaaa; /*same color as the nav bar*/
+  }
+
+  .top-nav a:hover {
+    color: #97bda2;
+    text-decoration: underline #97bda2;
+    text-decoration-thickness: 3px;
+    transition: 0.15s ease-in;
   }
 
   .label-nav {
-    display: flex;
+    display: flex; /*overrides the flex-direction column ".container" has */
     float: right; /* using float instead of justify-content, had problem with label drawing a whole line in the middle to click */
     cursor: pointer;
     margin: 15px; /* what makes it get centered */
@@ -75,7 +118,9 @@ nav a:hover {
   }
 
   #nav-button:checked ~ ul {
-    height: 100vh; /*when clicked on the ul is goingt to take upp the whole viewport height*/
+    height: calc(
+      100vh - 80px
+    ); /*when clicked on the "hamb" nav button it's going to take upp the whole viewport height - the 80px the nav bar has so it doesn't extend to far*/
     transition: height 0.15s; /* time for transition to full height */
   }
 }
