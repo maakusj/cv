@@ -56,10 +56,12 @@ header {
 
 .main-header {
   padding-top: 120px;
+  margin: 0px 15px 0px 15px;
 }
 
 .namnloggaren {
-  height: 250px;
+  width: 100%;
+  max-height: 250px;
 }
 
 .webdevelopment {
@@ -99,6 +101,72 @@ section {
   width: 33%;
 }
 
+.fullcard {
+  flex-direction: column;
+  width: 93.3%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fullcard li {
+  margin: 20px 0px 20px 0px;
+}
+
+.projects {
+  /*size of the whole project card*/
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  filter: grayscale(
+    100%
+  ); /*makes the whole "project"/"polaroid" greyed out when NOT active */
+}
+
+.projects:hover {
+  /*when hover take away the grayscale filter*/
+  filter: none;
+  transition: 0.25s;
+}
+
+.projects a {
+  text-decoration: none;
+}
+
+figure {
+  /* the "polaroid" has a white "frame" with a shadow around ir */
+  background-color: white;
+  box-shadow: 10px 10px 10px 10px grey;
+  padding: 5% 5% 15% 5%; /* the size that I think makes it look like a polaroid photo, %cause flexible */
+}
+
+figure > img {
+  box-sizing: border-box; /*image is the "child container" "gets inside" to figure the "parent container"*/
+  width: 100%; /*initially takes the full space inside the box*/
+  border: 1px solid grey; /*border around the img */
+}
+
+figcaption {
+  box-sizing: border-box; /*keeps it inside projects box */
+  width: 100%;
+  text-align: center;
+  font-family: "Permanent Marker", cursive; /*google font*/
+  font-size: 2vw;
+  color: rgba(0, 0, 0, 0.827);
+  line-height: 2em; /*how spaced out the text should be*/
+}
+
+.links {
+  /*links that are not in menu or footer*/
+  color: black;
+  text-decoration: double underline;
+  padding: 15px 15px 15px 0px;
+}
+
+a:hover {
+  color: #97bda2;
+  transition: 0.15s ease-in;
+}
+
 footer a {
   /*GitHublogo padded/aligned with "hamb" nav bar*/
   float: right;
@@ -119,7 +187,8 @@ footer a {
 }
 
 /*when screen width is less than 680 pixel go to "mobile version with "hamb bar" and dropdown menu instead */
-@media (max-width: 680px) {
+@media (max-width: 820px) {
+  /*ipad format*/
   .top-nav {
     position: absolute; /*not sure why I had to set it to absolute, think it has to be to set if I want out of the flexbox flow */
     margin-top: 80px; /*where the dropdown menu should start*/
@@ -130,9 +199,18 @@ footer a {
     background-color: #bdaaaa; /*same color as the nav bar*/
   }
 
+  .top-nav li {
+    margin: 8px 0px 8px 0px;
+  }
+
+  .top-nav a {
+    padding: 15px;
+  }
+
   .top-nav a:hover {
-    color: #97bda2;
-    text-decoration: underline #97bda2;
+    /*look over this stuff later so it looks better on mobile since you can't hover and what not*/
+    color: #ffffff80;
+    text-decoration: underline #ffffff80;
     text-decoration-thickness: 3px;
     transition: 0.15s ease-in;
   }
@@ -152,13 +230,32 @@ footer a {
       100vh - 80px
     ); */ /*when clicked on the "hamb" nav button it's going to take upp the whole viewport height - the 80px the nav bar has so it doesn't extend to far*/
     transition: height 0.15s; /* time for transition to full height */
+    z-index: 1; /*to get it to display over everything else; example my polaroid cards came in front otherwise*/
+  }
+
+  .links {
+    color: black;
+    text-decoration: double underline black;
+  }
+
+  .projects {
+    filter: none; /*since you cant hover on touch displays */
   }
 
   section {
     width: 93.3%; /*aligned to the .card, space evenly above*/
   }
 
+  .card {
+    width: 93.3%;
+  }
+
   .cardp {
     width: 100%;
+  }
+
+  .contact {
+    /* a tad more margin on button than default, so it's not so hard to click on wrong button*/
+    margin: 18.72px 0px 30px 0px;
   }
 }

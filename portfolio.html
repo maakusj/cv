@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="sv-SE"> <!--language svenska- country sweden-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portolio - Markus Johansson</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/6277f84f94.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <input type = "checkbox" id = "nav-button"></input> <!--creating a checkbox linked to label that when clicking on the "hamburger" icon a dropdown menu displays-->
+        <label class="label-nav" for = "nav-button"><i class="fa-solid fa-bars fa-xl" style="color: #ffffff"></i></label> <!--label bound to id "nav-button"-->
+        <ul class="top-nav">
+          <li><a href="index.html">Hem</a></li>
+          <li><a href="about.html">Om mig</a></li>
+          <li><a class="active" href="portfolio.html">Portfolio</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <header class="fullcard">
+        <div>
+          <h1>Projekt</h1>
+        </div>
+        <div>
+          <hr />
+        </div>
+        <div class="projects">
+          <a href="https://maakusj.github.io/html-hello-world">
+            <figure>
+              <img src="./images/html-hello-world.png" />
+              <figcaption>
+                1. html-hello-world
+              </figcaption>
+            </figure>
+          </a>
+        </div>
+      </header>
+    </div>
+    <footer>
+      <a href="https://github.com/maakusj">
+        <i class="fa-brands fa-github fa-2xl" style="color: #000000"></i>
+      </a>
+    </footer>
+  </body>
+</html>
