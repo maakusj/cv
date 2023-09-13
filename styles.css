@@ -1,29 +1,27 @@
 body {
+  display: flex;
+  flex-direction: column; /* stacked on top of each other */
   margin: 0px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
   flex: 1;
-  display: flex; /* Behaves like a block */
-  flex-direction: column; /* stacked on top of each other */
-  gap: 1rem; /* gaps between every div/item */
 }
 
 nav {
-  /* separated this from nav ul in case I add something in the ul "logo" or something */
+  /* separated this from "top-nav"" in case I add something in it like "logo" or something */
   background-color: #0000008a;
-  border-image: linear-gradient(#0000008a, white) 15; /*wanted a little smoother transition between the nav and header */
+  border-image: linear-gradient(#0000008a, #f5f5f5) 15; /*wanted a little smoother transition between the nav and header */
   border-width: 0px 0px 4px 0px;
   border-style: solid;
   height: 80px;
 }
 
-.logo img {
-  height: 50px;
-}
-
-.desktop-nav {
-  display: flex; /* ?makes it behave like a "block, full width", and Overrides the flex-direction column to row again */
+.top-nav {
+  display: flex; /* ?makes it behave like a "block, full width", and Overrides the flex-direction column (from .container) to row again */
   gap: 1.5rem; /* spacing between the items on the sides */
   align-items: center; /* center the li in x-axis */
   justify-content: center; /*center the ul in z-axis*/
@@ -35,7 +33,7 @@ nav {
 
 nav a {
   color: white;
-  text-decoration: none; /* no unerline */
+  text-decoration: none; /* no underline */
   text-transform: uppercase;
   font-family: Arial, Helvetica, sans-serif;
   transition: 0.15s ease; /*ease in the transition*/
@@ -49,26 +47,215 @@ nav a:hover {
   color: #ffffff80;
 }
 
-@media (max-width: 680px) {
-  .desktop-nav {
-    display: none;
-  }
-
-  .mobile-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  .logo img {
-    height: 60px;
-  }
+/*header*/
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
-@media (min-width: 681px) {
-  .mobile-nav {
-    display: none;
+.main-header {
+  padding-top: 120px;
+  margin: 0px 15px 0px 15px;
+}
+
+.namnloggaren {
+  width: 100%;
+  max-height: 250px;
+}
+
+.webdevelopment {
+  color: #97bda2;
+}
+
+.card {
+  width: 45%;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.title-image {
+  width: 100%;
+  float: right;
+  margin-top: 21.44px;
+  border-radius: 3px;
+}
+
+section {
+  width: 93.3%;
+}
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.cardp {
+  width: 33%;
+}
+
+.fullcard {
+  flex-direction: column;
+  width: 93.3%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fullcard li {
+  margin: 20px 0px 20px 0px;
+}
+
+.projects {
+  /*size of the whole project card*/
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  filter: grayscale(
+    100%
+  ); /*makes the whole "project"/"polaroid" greyed out when NOT active */
+}
+
+.projects:hover {
+  /*when hover take away the grayscale filter*/
+  filter: none;
+  transition: 0.25s;
+}
+
+.projects a {
+  text-decoration: none;
+}
+
+figure {
+  /* the "polaroid" has a white "frame" with a shadow around ir */
+  background-color: white;
+  box-shadow: 10px 10px 10px 10px grey;
+  padding: 5% 5% 15% 5%; /* the size that I think makes it look like a polaroid photo, %cause flexible */
+}
+
+figure > img {
+  box-sizing: border-box; /*image is the "child container" "gets inside" to figure the "parent container"*/
+  width: 100%; /*initially takes the full space inside the box*/
+  border: 1px solid grey; /*border around the img */
+}
+
+figcaption {
+  box-sizing: border-box; /*keeps it inside projects box */
+  width: 100%;
+  text-align: center;
+  font-family: "Permanent Marker", cursive; /*google font*/
+  font-size: 2vw;
+  color: rgba(0, 0, 0, 0.827);
+  line-height: 2em; /*how spaced out the text should be*/
+}
+
+.links {
+  /*links that are not in menu or footer*/
+  color: black;
+  text-decoration: double underline;
+  padding: 15px 15px 15px 0px;
+}
+
+a:hover {
+  color: #97bda2;
+  transition: 0.15s ease-in;
+}
+
+footer a {
+  /*GitHublogo padded/aligned with "hamb" nav bar*/
+  float: right;
+  margin: 15px;
+  padding: 10px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/*hide the nav&label buttons here when "full size width"*/
+#nav-button {
+  display: none; /*hides the input checkbox when  "full width size" nav is used */
+}
+
+.label-nav {
+  /*hides my "hamb" nav bar icon when "full width size" nav is used */
+  display: none;
+}
+
+/*when screen width is less than 680 pixel go to "mobile version with "hamb bar" and dropdown menu instead */
+@media (max-width: 820px) {
+  /*ipad format*/
+  .top-nav {
+    position: absolute; /*not sure why I had to set it to absolute, think it has to be to set if I want out of the flexbox flow */
+    margin-top: 80px; /*where the dropdown menu should start*/
+    height: 0px; /* set to 0 because i don't want anything to stand out of the main nav when "mobile" "hamb" bar isn't activated  */
+    overflow: hidden; /* (maybe remove this) so it doesn't "shine" through */
+    flex-direction: column; /* makes the nav ul (li) gets stacked on top of each other instead */
+    width: 100%; /* the dropdown should take the whole screen width */
+    background-color: #bdaaaa; /*same color as the nav bar*/
+  }
+
+  .top-nav li {
+    margin: 8px 0px 8px 0px;
+  }
+
+  .top-nav a {
+    padding: 15px;
+  }
+
+  .top-nav a:hover {
+    /*look over this stuff later so it looks better on mobile since you can't hover and what not*/
+    color: #ffffff80;
+    text-decoration: underline #ffffff80;
+    text-decoration-thickness: 3px;
+    transition: 0.15s ease-in;
+  }
+
+  .label-nav {
+    display: flex; /*overrides the flex-direction column ".container" has */
+    float: right; /* using float instead of justify-content, had problem with label drawing a whole line in the middle to click */
+    cursor: pointer;
+    margin: 15px; /* what makes it get centered */
+    padding: 15px; /* some padding so it's easier to hit the nav/"hamb"/"label" bar */
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  #nav-button:checked ~ ul {
+    height: 100vh; /*calc(
+      100vh - 80px
+    ); */ /*when clicked on the "hamb" nav button it's going to take upp the whole viewport height - the 80px the nav bar has so it doesn't extend to far*/
+    transition: height 0.15s; /* time for transition to full height */
+    z-index: 1; /*to get it to display over everything else; example my polaroid cards came in front otherwise*/
+  }
+
+  .links {
+    color: black;
+    text-decoration: double underline black;
+  }
+
+  .projects {
+    filter: none; /*since you cant hover on touch displays */
+  }
+
+  section {
+    width: 93.3%; /*aligned to the .card, space evenly above*/
+  }
+
+  .card {
+    width: 93.3%;
+  }
+
+  .cardp {
+    width: 100%;
+  }
+
+  .contact {
+    /* a tad more margin on button than default, so it's not so hard to click on wrong button*/
+    margin: 18.72px 0px 30px 0px;
   }
 }
