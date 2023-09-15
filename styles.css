@@ -243,6 +243,10 @@ footer a {
     width: 75%;
   }
 
+  figcaption {
+    font-size: 3vw;
+  }
+
   section {
     width: 93.3%; /*aligned to the .card, space evenly above*/
   }
